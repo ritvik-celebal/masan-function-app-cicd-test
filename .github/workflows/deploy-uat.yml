@@ -1,0 +1,17 @@
+name: CI/CD for UAT
+
+on:
+  push:
+    branches:
+      - uat
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-deploy:
+    uses: ./.github/workflows/build-and-deploy.yml
+    with:
+      env_name: uat
+    secrets: inherit
